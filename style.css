@@ -1,0 +1,60 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    background-color: rgb(79, 107, 107);
+}
+
+#memory-card-container{
+    background-color: white;
+    height: 80vh;
+    width: 100%;
+    display: flex;
+
+    flex-wrap: wrap;
+}
+.card{
+    margin: 10px;
+    height: 100px;
+    width: 100px;
+    border: 1px solid rgb(75, 72, 72);
+}
+
+
+.card.backSide{
+    background-color: rgb(0, 0, 0);
+  
+    
+}
+
+.red{
+    background-color: red;
+}
+.blue{
+    background-color: blue;
+}
+.green{
+    background-color: green;
+}
+.yellow{
+    background-color: yellow;
+}
+.orange{
+    background-color: orange;
+}
+.grey{
+    background-color: grey;
+}
+.teal{
+    background-color: teal;
+}
+.wheat{
+    background-color: wheat;
+}
+.pink{
+    background-color: pink;
+}
