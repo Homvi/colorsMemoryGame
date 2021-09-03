@@ -11,8 +11,8 @@ body{
 
 #memory-card-container{
     background-color: white;
-    height: 80vh;
-    width: 100%;
+    height: fit-content;
+    width: fit-content;
     display: flex;
 
     flex-wrap: wrap;
