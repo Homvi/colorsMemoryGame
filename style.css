@@ -10,10 +10,12 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
 }
 
 #memory-card-container{
     background-color: white;
+    border-radius: 3px;
     height: fit-content;
     width: 800px;
     display: flex;
@@ -24,15 +26,23 @@ body{
 
 .card{
     margin: 20px;
+    
     height: 100px;
     width: 100px;
-    border: 1px solid rgb(75, 72, 72);
+    cursor: pointer;
+    border-radius: 10%;
 }
 
 
 .card.backSide{
-    background-color: rgb(0, 0, 0);
-  
+    background-color: rgb(0, 0, 0); 
+    transition: 0.15s;
+}
+.card.backSide:hover{
+    background-color: rgb(22, 22, 22); 
+    height: 110px;
+    width: 110px;
+    margin: 15px;
     
 }
 
