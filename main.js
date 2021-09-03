@@ -2,18 +2,26 @@ let cardsList = document.getElementsByClassName("card");
 let cardsArr = Array.from(cardsList);
 let clickedCards = [];
 let pairsFound = [];
+let pairsFoundData = document.querySelector(".pairsFoundData")
 
 let gameOverAction = () => {
   if (pairsFound.length == 18) {
     alert("Ügyes fiú!!");
     setTimeout(() => {
       location.reload();
-    }, 2000);
+    }, 1000);
   }
 };
 
 const actionOnPair = () => {
   if (clickedCards.length == 2) {
+    removeEventListenerFromCards()
+    setTimeout(() => {
+        addEventListenerToCards()
+    }, 1000);
+
+
+
     console.log("You have turned two cards up!");
     //check if pair has found
     if (
@@ -59,22 +67,28 @@ randomizeOrder();
 
 let flipCard = (e) => {
   e.target.classList.toggle("backSide");
-  console.log(`The clicked card is: ${e.target.dataset.name}`);
   clickedCards.push(e.target.dataset.name);
-  console.log(`Clicked cards: ${clickedCards}`);
   actionOnPair();
+  if(pairsFound){
+      pairsFoundData.innerHTML =  `${pairsFound.length/2} of 9`
+  }
 };
 
 let addEventListenerToCards = () => {
   cardsArr.map((card) => {
+      if(pairsFound.indexOf(card)  == -1){
     card.addEventListener("click", flipCard);
-  });
+  }
+ })
 };
+
 
 let removeEventListenerFromCards = () => {
   cardsArr.map((card) => {
     card.removeEventListener("click", flipCard);
   });
 };
+
+
 
 addEventListenerToCards();

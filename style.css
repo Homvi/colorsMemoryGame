@@ -6,19 +6,24 @@
 
 body{
     height: 100vh;
-    background-color: rgb(79, 107, 107);
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #memory-card-container{
     background-color: white;
     height: fit-content;
-    width: fit-content;
+    width: 800px;
     display: flex;
-
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
+
 .card{
-    margin: 10px;
+    margin: 20px;
     height: 100px;
     width: 100px;
     border: 1px solid rgb(75, 72, 72);
@@ -57,4 +62,16 @@ body{
 }
 .pink{
     background-color: pink;
+}
+
+.pairs-found-container{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    color: white;
 }
