@@ -47,7 +47,7 @@ const actionOnPair = () => {
           card1.classList.toggle("backSide");
           card2.classList.toggle("backSide");
         }
-      }, 2000);
+      }, 1000);
       clickedCards = [];
     }
   }
