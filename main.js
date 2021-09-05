@@ -2,11 +2,11 @@ let cardsList = document.getElementsByClassName("card");
 let cardsArr = Array.from(cardsList);
 let clickedCards = [];
 let pairsFound = [];
-let pairsFoundData = document.querySelector(".pairsFoundData")
+let pairsFoundData = document.querySelector(".pairsFoundData");
 
 let gameOverAction = () => {
   if (pairsFound.length == 18) {
-    alert("Ügyes fiú!!");
+    alert("Szép volt!");
     setTimeout(() => {
       location.reload();
     }, 1000);
@@ -15,14 +15,10 @@ let gameOverAction = () => {
 
 const actionOnPair = () => {
   if (clickedCards.length == 2) {
-    removeEventListenerFromCards()
+    removeEventListenerFromCards();
     setTimeout(() => {
-        addEventListenerToCards()
+      addEventListenerToCards();
     }, 1000);
-
-
-
-    console.log("You have turned two cards up!");
     //check if pair has found
     if (
       clickedCards[0] == `${clickedCards[1]}2` ||
@@ -50,7 +46,6 @@ const actionOnPair = () => {
         card1.classList.toggle("backSide");
         card2.classList.toggle("backSide");
       }, 2000);
-      console.log("that is not a pair");
       clickedCards = [];
     }
   }
@@ -69,26 +64,23 @@ let flipCard = (e) => {
   e.target.classList.toggle("backSide");
   clickedCards.push(e.target.dataset.name);
   actionOnPair();
-  if(pairsFound){
-      pairsFoundData.innerHTML =  `${pairsFound.length/2} of 9`
+  if (pairsFound) {
+    pairsFoundData.innerHTML = `${pairsFound.length / 2} of 9`;
   }
 };
 
 let addEventListenerToCards = () => {
   cardsArr.map((card) => {
-      if(pairsFound.indexOf(card)  == -1){
-    card.addEventListener("click", flipCard);
-  }
- })
+    if (pairsFound.indexOf(card) == -1) {
+      card.addEventListener("click", flipCard);
+    }
+  });
 };
-
 
 let removeEventListenerFromCards = () => {
   cardsArr.map((card) => {
     card.removeEventListener("click", flipCard);
   });
 };
-
-
 
 addEventListenerToCards();
