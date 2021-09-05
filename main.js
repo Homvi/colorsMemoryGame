@@ -6,7 +6,6 @@ let pairsFoundData = document.querySelector(".pairsFoundData");
 
 let gameOverAction = () => {
   if (pairsFound.length == 18) {
-    alert("Szép volt!");
     setTimeout(() => {
       location.reload();
     }, 1000);
@@ -29,10 +28,11 @@ const actionOnPair = () => {
       const card2 = document.querySelector(`[data-name=${clickedCards[1]}]`);
       card1.removeEventListener("click", flipCard);
       card2.removeEventListener("click", flipCard);
-      alert("Szép munka!");
       pairsFound.push(card1);
       pairsFound.push(card2);
       clickedCards = [];
+      card1.classList.add("invisible");
+      card2.classList.add("invisible");
       gameOverAction();
     }
     if (
@@ -43,8 +43,10 @@ const actionOnPair = () => {
       const card1 = document.querySelector(`[data-name=${clickedCards[0]}]`);
       const card2 = document.querySelector(`[data-name=${clickedCards[1]}]`);
       setTimeout(() => {
-        card1.classList.toggle("backSide");
-        card2.classList.toggle("backSide");
+        if (card1 && card2) {
+          card1.classList.toggle("backSide");
+          card2.classList.toggle("backSide");
+        }
       }, 2000);
       clickedCards = [];
     }
