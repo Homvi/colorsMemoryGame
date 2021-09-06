@@ -17,7 +17,7 @@ const colorsMemoryGame = {
       }, 1000);
     }
   },
- //Randomize order of the cards
+  //Randomize order of the cards
   randomizeOrder() {
     cardsArr.map((card) => {
       let randomNumber = Math.floor(Math.random() * 20);
@@ -96,7 +96,7 @@ const colorsMemoryGame = {
       card.removeEventListener("click", colorsMemoryGame.flipCard);
     });
   },
-  
+
   prepareGame() {
     colorsMemoryGame.randomizeOrder();
     colorsMemoryGame.addEventListenerToVisibleCards();
