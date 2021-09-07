@@ -1,13 +1,14 @@
 //grabbing elements from html
 let cardsList = document.getElementsByClassName("card");
 let clicksData = document.querySelector(".clicksData");
+let timeData = document.querySelector(".timeData");
 let pairsFoundData = document.querySelector(".pairsFoundData");
-
 
 //declare global variables
 let clickedCards = [];
 let pairsFound = [];
 let numOfClicks = 0;
+let timeSpentInSeconds = 0;
 let cardsArr = Array.from(cardsList);
 
 //declare object for gameFunctions
@@ -21,13 +22,22 @@ const colorsMemoryGame = {
     }
   },
   //Count clicks
-  countClicks(){
+  countClicks() {
     numOfClicks += 1;
-    if(clicksData){
+    if (clicksData) {
       clicksData.innerHTML = numOfClicks;
     }
   },
-  
+  //start counting when started
+  setAndStartTimer() {
+    if (numOfClicks == 1) {
+      setInterval(() => {
+        timeSpentInSeconds += 1;
+        timeData.innerHTML = `${timeSpentInSeconds}s`;
+      }, 1000);
+    }
+  },
+
   //Randomize order of the cards
   randomizeOrder() {
     cardsArr.map((card) => {
@@ -38,8 +48,8 @@ const colorsMemoryGame = {
 
   flipCard(e) {
     e.target.classList.toggle("backSide");
-   
-    colorsMemoryGame.countClicks()
+    colorsMemoryGame.countClicks();
+    colorsMemoryGame.setAndStartTimer();
     clickedCards.push(e.target.dataset.name);
     if (clickedCards.length == 2) {
       //prevent user from clicking more cards at the same time
