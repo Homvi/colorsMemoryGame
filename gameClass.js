@@ -17,7 +17,17 @@ const colorsMemoryGame = {
   gameOverAction() {
     if (pairsFound.length == 18) {
       setTimeout(() => {
-        alert(`Your score is:${numOfClicks+timeSpentInSeconds}`)
+        navigator.serviceWorker.register("sw.js");
+        Notification.requestPermission(function (result) {
+          if (result === "granted") {
+            navigator.serviceWorker.ready.then(function (registration) {
+              registration.showNotification(
+                `Your score is:-${numOfClicks + timeSpentInSeconds}`
+              );
+            });
+          }
+        });
+        //alert(`Your score is:-${numOfClicks + timeSpentInSeconds}`);
         location.reload();
       }, 1000);
     }
