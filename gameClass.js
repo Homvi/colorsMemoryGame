@@ -17,6 +17,7 @@ const colorsMemoryGame = {
   gameOverAction() {
     if (pairsFound.length == 18) {
       setTimeout(() => {
+        alert(`Your score is:${numOfClicks+timeSpentInSeconds}`)
         location.reload();
       }, 1000);
     }
