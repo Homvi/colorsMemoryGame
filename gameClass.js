@@ -21,9 +21,7 @@ const colorsMemoryGame = {
     if (pairsFound.length == 18) {
       setTimeout(() => {
         gameOverContainer.classList.toggle("invisible");
-        finalScore.innerHTML = ` -${
-          numOfClicks + timeSpentInSeconds
-        }`;
+        finalScore.innerHTML = ` -${numOfClicks + timeSpentInSeconds}`;
         newGameBtn.addEventListener("click", function () {
           location.reload();
         });
