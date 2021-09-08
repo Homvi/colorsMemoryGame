@@ -1,6 +1,9 @@
 //grabbing elements from html
 let cardsList = document.getElementsByClassName("card");
 let clicksData = document.querySelector(".clicksData");
+let newGameBtn = document.querySelector("#newGameBtn");
+let gameOverContainer = document.querySelector(".game-over-container");
+let finalScore = document.querySelector(".highlighted-score");
 let timeData = document.querySelector(".timeData");
 let pairsFoundData = document.querySelector(".pairsFoundData");
 
@@ -17,8 +20,13 @@ const colorsMemoryGame = {
   gameOverAction() {
     if (pairsFound.length == 18) {
       setTimeout(() => {
-        alert(`Your score is:-${numOfClicks + timeSpentInSeconds}`);
-        location.reload();
+        gameOverContainer.classList.toggle("invisible");
+        finalScore.innerHTML = ` -${
+          numOfClicks + timeSpentInSeconds
+        }`;
+        newGameBtn.addEventListener("click", function () {
+          location.reload();
+        });
       }, 1000);
     }
   },
